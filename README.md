@@ -1,0 +1,1 @@
+# Api url -> https://disease.sh

@@ -1,0 +1,59 @@
+.infoBox {
+    flex: 1;
+    cursor: pointer;
+}
+
+.infoBox--cases {
+    border-top: 10px solid black;
+    color: black;
+}
+
+.infoBox--recovered {
+    border-top: 10px solid greenyellow;
+    color: greenyellow;
+}
+
+.infoBox--deaths {
+    border-top: 10px solid #cc1034;
+    color: #cc1034;
+}
+
+.infoBox__cases--cases {
+    color: black;
+}
+
+.infoBox__cases--recovered {
+    color: greenyellow;
+}
+
+.infoBox__cases--deaths {
+    color: #cc1034;
+}
+
+.infoBox__cases {
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.infoBox:not(:last-child) {
+    margin-right: 15px;
+}
+
+.infoBox__total {
+    color: #6c757d;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 15px !important;
+}
+
+@media (max-width: 414px) {
+    .infoBox__cases {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .MuiCardContent-root {
+        padding: 0.3rem !important;
+    }
+}
