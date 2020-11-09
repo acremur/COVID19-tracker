@@ -56,7 +56,7 @@ function LineGraph({ casesType='cases', country }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = country === undefined ? links.last : `https://disease.sh/v3/covid-19/historical/${country}?lastdays=120`
+            const url = country === undefined ? links.lastAll : `${links.last}${country}?lastdays=120`
             await fetch(url)
                 .then(res => res.json())
                 .then(data => {
