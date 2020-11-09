@@ -63,9 +63,10 @@ function LineGraph({ casesType='cases', country }) {
                     const chartData = buildChartData(data, casesType)
                     setData(chartData)
                 })
-        }
-        fetchData()
-    }, [casesType, country])
+            }
+            fetchData()
+        // eslint-disable-next-line
+        }, [casesType, country])
 
     useEffect(() => {
         if (casesType === 'cases') {
@@ -92,6 +93,7 @@ function LineGraph({ casesType='cases', country }) {
                 lastDataPoint = data[casesType][date]
             }
         } else {
+            if (data.timeline === undefined) return
             for (let date in data.timeline[casesType]) {
                 if (lastDataPoint) {
                     const newDataPoint = {
@@ -109,7 +111,7 @@ function LineGraph({ casesType='cases', country }) {
 
     return (
         <div className='lineGraph'>
-            {data?.length > 0 && (
+            {data?.length > 0 ? (
                 <Line data={{
                     datasets: [{
                         backgroundColor: `rgba(${graphColor}, 0.7)`,
@@ -117,6 +119,8 @@ function LineGraph({ casesType='cases', country }) {
                         data: data
                     }]
                 }} options={options} />
+            ) : (
+                <h1 className='lineGraph__empty'>Not data found for this country</h1>
             )}
         </div>
     )
