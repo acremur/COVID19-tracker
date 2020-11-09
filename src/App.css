@@ -81,7 +81,7 @@ body {
     to { color: #9b1818; }
   }
 
-@media (max-width: 952px) {
+@media (max-width: 820px) {
     body {
         overflow-y: auto;
     }
