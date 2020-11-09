@@ -1,11 +1,31 @@
 .infoBox {
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
     flex: 1;
     cursor: pointer;
 }
 
+.infoBox:hover {
+    background: linear-gradient(to right, #444749, #2d3031);
+}
+
+.infoBox:active {
+    background: linear-gradient(to right, #303133, #141516);
+}
+
+.infoBox__title,
+.infoBox__total {
+    color: whitesmoke !important;
+}
+
+.infoBox__cases {
+    color: #829eb4;
+}
+
 .infoBox--cases {
-    border-top: 10px solid black;
-    color: black;
+    border-top: 10px solid #40F6FF;
+    color: #40F6FF;
 }
 
 .infoBox--recovered {
@@ -19,7 +39,7 @@
 }
 
 .infoBox__cases--cases {
-    color: black;
+    color: #40F6FF;
 }
 
 .infoBox__cases--recovered {
@@ -41,7 +61,6 @@
 }
 
 .infoBox__total {
-    color: #6c757d;
     font-weight: 700 !important;
     font-size: 0.8rem !important;
     margin-top: 15px !important;

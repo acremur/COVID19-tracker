@@ -20,6 +20,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(3)
   const [mapCountries, setMapCountries] = useState([])
   const [casesType, setCasesType] = useState('cases')
+  const [today, setToday] = useState(false)
 
   useEffect(() => {
     fetch(data.all)
@@ -39,14 +40,15 @@ function App() {
               value: country.countryInfo.iso2 // ES, IT, FR ...
             }
           ))  
-          const sortedData = sortData(data)
+          const sortedData = sortData(data, casesType, today)
           setTableData(sortedData)
           setMapCountries(data)
           setCountries(countries)
+          setTableData(sortedData)
         })
     }
     getCountriesData()
-  }, [])
+  }, [casesType, today])
 
   const onCountryChange = async e => {
     const countryCode = e.target.value
@@ -73,16 +75,17 @@ function App() {
     <div className="app">
       <div className="app__left">
         <div className="app__header">
-          <h1>COVID-19 TRACKER</h1>
+          <h1 onClick={e => setToday(!today)} className='app__title'>COVID-19 {today ? 'TODAY' : 'TOTAL'}</h1>
           <FormControl className='app__dropdown'>
-            <Select 
+            <Select
+              style={{color: "white"}}
               variant='outlined' 
               value={country}
               onChange={onCountryChange}
             >
-              <MenuItem key='worldwide' value='worldwide'>Worldwide</MenuItem>
+              <MenuItem style={{color: "white"}} key='worldwide' value='worldwide'>Worldwide</MenuItem>
               {countries.map(country => (
-                <MenuItem key={country.id} value={country.value}>{country.name}</MenuItem>
+                <MenuItem style={{color: "white"}} key={country.id} value={country.value}>{country.name}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -121,15 +124,16 @@ function App() {
           countries={mapCountries} 
           center={mapCenter} 
           zoom={mapZoom} 
+          today={today}
         />
       </div>
 
       <div className="app__right">
         <Card>
           <CardContent>
-            <h3>Live cases by country</h3>
-            <Table countries={tableData} />
-              <h3 >Worldwide new {casesType}</h3>
+              <h3  className='app_tableTitle' onClick={e => setToday(!today)}>Live {today ? 'today' : 'total'} {casesType} by country </h3>
+            <Table countries={tableData} casesType={casesType} today={today} />
+              <h3 style={{color: "whitesmoke"}}>Worldwide new {casesType}</h3>
             <LineGraph casesType={casesType} />
           </CardContent>
         </Card>

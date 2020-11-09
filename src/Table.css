@@ -4,6 +4,13 @@
     color: #6a5d5d;
     margin-bottom: 1rem;
     margin-top: 0.3rem;
+    background-color: whitesmoke;
+}
+
+.MuiPaper-root {
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 
 .table tr {
@@ -16,5 +23,5 @@
 }
 
 .table tr:nth-of-type(odd) {
-    background-color: #f3f2f8;
+    background-color: #ccd9e4;
 }

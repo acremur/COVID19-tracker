@@ -1,5 +1,8 @@
 body {
-    background-color: #f5f6fa;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #545658, #424546);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #545658, #424546); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
     overflow: auto;
 }
 
@@ -9,9 +12,36 @@ body {
     padding: 1rem;
 }
 
+.app__title {
+    cursor: pointer;
+}
+
+.app__title:hover {
+    color: #fa5c5c;
+}
+
+.app__title:active {
+    color: #fa4141;
+}
+
 .app__dropdown {
-    background-color: white;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
     width: 12rem;
+}
+
+.app__dropdown:hover {
+    background: linear-gradient(to right, #444749, #2d3031);
+}
+
+.app__dropdown:active {
+    background: linear-gradient(to right, #303133, #141516);
+}
+
+
+.app__select {
+    color: #829eb4;
 }
 
 .app__header > h1 {
@@ -41,7 +71,17 @@ body {
     justify-content: space-between;
 }
 
-@media (max-width: 1024px) {
+.app_tableTitle {
+    cursor: pointer;
+    animation: textAnim 1s linear 2s infinite alternate;
+}
+
+@keyframes textAnim {
+    from { color: #fc3c3c; }
+    to { color: #9b1818; }
+  }
+
+@media (max-width: 952px) {
     body {
         overflow-y: auto;
     }

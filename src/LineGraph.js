@@ -68,7 +68,7 @@ function LineGraph({ casesType='cases' }) {
 
     useEffect(() => {
         if (casesType === 'cases') {
-            setGraphColor('0, 0, 0')
+            setGraphColor('64, 246, 255')
         } else if (casesType === 'recovered') {
             setGraphColor('173, 255, 47')
         } else {
@@ -97,8 +97,8 @@ function LineGraph({ casesType='cases' }) {
             {data?.length > 0 && (
                 <Line data={{
                     datasets: [{
-                        backgroundColor: `rgba(${graphColor}, 0.5)`,
-                        borderColor: `rgb(${graphColor})`,
+                        backgroundColor: `rgba(${graphColor}, 0.7)`,
+                        borderColor: `rgb(${0})`,
                         data: data
                     }]
                 }} options={options} />
