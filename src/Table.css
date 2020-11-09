@@ -18,10 +18,18 @@
     justify-content: space-between;
 }
 
+.table tr:hover {
+    color: black;
+}
+
 .table td {
     padding: 0.5rem;
 }
 
 .table tr:nth-of-type(odd) {
     background-color: #ccd9e4;
+}
+
+.table tr:nth-of-type(odd):hover {
+    color: black;
 }

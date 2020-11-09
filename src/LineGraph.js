@@ -49,14 +49,15 @@ const options = {
     }
 }
 
-function LineGraph({ casesType='cases' }) {
+function LineGraph({ casesType='cases', country }) {
 
     const [data, setData] = useState({})
     const [graphColor, setGraphColor] = useState('204, 16, 52')
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetch(links.last)
+            const url = country === undefined ? links.last : `https://disease.sh/v3/covid-19/historical/${country}?lastdays=120`
+            await fetch(url)
                 .then(res => res.json())
                 .then(data => {
                     const chartData = buildChartData(data, casesType)
@@ -64,7 +65,7 @@ function LineGraph({ casesType='cases' }) {
                 })
         }
         fetchData()
-    }, [casesType])
+    }, [casesType, country])
 
     useEffect(() => {
         if (casesType === 'cases') {
@@ -79,16 +80,30 @@ function LineGraph({ casesType='cases' }) {
     const buildChartData = (data, casesType) => {
         const chartData = []
         let lastDataPoint
-        for (let date in data.cases) {
-            if (lastDataPoint) {
-                const newDataPoint = {
-                    x: date,
-                    y: data[casesType][date] - lastDataPoint
-                }
-                chartData.push(newDataPoint)
-            } 
-            lastDataPoint = data[casesType][date]
+        if (country === undefined) {
+            for (let date in data[casesType]) {
+                if (lastDataPoint) {
+                    const newDataPoint = {
+                        x: date,
+                        y: data[casesType][date] - lastDataPoint
+                    }
+                    chartData.push(newDataPoint)
+                } 
+                lastDataPoint = data[casesType][date]
+            }
+        } else {
+            for (let date in data.timeline[casesType]) {
+                if (lastDataPoint) {
+                    const newDataPoint = {
+                        x: date,
+                        y: data.timeline[casesType][date] - lastDataPoint
+                    }
+                    chartData.push(newDataPoint)
+                } 
+                lastDataPoint = data.timeline[casesType][date]
+            }
         }
+        
         return chartData
     }
 

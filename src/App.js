@@ -134,7 +134,7 @@ function App() {
               <h3  className='app_tableTitle' onClick={e => setToday(!today)}>Live {today ? 'today' : 'total'} {casesType} by country </h3>
             <Table countries={tableData} casesType={casesType} today={today} />
               <h3 style={{color: "whitesmoke"}}>Worldwide new {casesType}</h3>
-            <LineGraph casesType={casesType} />
+            <LineGraph casesType={casesType} country={countryInfo.country} />
           </CardContent>
         </Card>
       </div>            
